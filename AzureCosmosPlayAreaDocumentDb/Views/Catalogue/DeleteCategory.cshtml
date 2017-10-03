@@ -1,0 +1,34 @@
+﻿@model AzureCosmosPlayAreaDocumentDb.Models.Category
+
+@{
+    ViewBag.Title = "DeleteCategory";
+}
+
+<h2>DeleteCategory</h2>
+
+@using (Html.BeginForm("DeleteCategory", "Catalogue", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">CategoryId</label>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m => m.Id, new { @class = "form-control", disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Category Name</label>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Delete</button>
+                <a href="@Url.Action("CatalogIndex")" class="btn btn-default">Back</a>
+            </div>
+        </div>
+    </div>
+}

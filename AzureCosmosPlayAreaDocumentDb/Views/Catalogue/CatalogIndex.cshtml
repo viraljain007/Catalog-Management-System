@@ -1,0 +1,107 @@
+﻿@model AzureCosmosPlayAreaDocumentDb.Models.CatalogViewModel
+@using AzureCosmosPlayAreaDocumentDb.Models;
+
+@{
+    ViewBag.Title = "CatalogIndex";
+}
+
+<h2>CatalogIndex</h2>
+
+@if (Model == null)
+{
+    <h4>No courses found!</h4>
+}
+else
+{
+
+    <p><h1>Category List</h1></p>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Category Id</th>
+                <th>Category Name</th>
+                <th>Action(s)</th>
+            </tr>
+        </thead>
+        <tbody>
+          @foreach (Category category in Model.CategoryList)
+          {
+                <tr>
+                    <td>@category.Id</td>
+                    <td>@category.Name</td>
+                    <td>
+                        <a href="@Url.Action("Details", new { id = category.Id })">Details</a>
+                        <a href="@Url.Action("EditCategory", new { id = category.Id })">Edit</a>
+                        <a href="@Url.Action("DeleteCategory", new { id = category.Id })">Delete</a>
+                    </td>
+                </tr>
+          }
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="@Url.Action("CreateCategory")">Create Category</a>
+
+    <br/>
+    <br/>
+
+    <p><h1>SubCategory List</h1></p>
+
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>SubCategory Id</th>
+                <th>SubCategory Name</th>
+                <th>Action(s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (SubCategory subcategory in Model.SubCategoryList)
+            {
+                <tr>
+                    <td>@subcategory.Id</td>
+                    <td>@subcategory.Name</td>
+                    <td>
+                        <a href="@Url.Action("Details", new { id = subcategory.Id })">Details</a>
+                        <a href="@Url.Action("EditSubCategory", new { id = subcategory.Id })">Edit</a>
+                        <a href="@Url.Action("DeleteSubCategory", new { id = subcategory.Id })">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="@Url.Action("CreateSubCategory")">Create SubCategory</a>
+
+    <br />
+    <br />
+
+    <p><h1>Product List</h1></p>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Action(s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Product product in Model.ProductList)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>
+                        <a href="@Url.Action("Details", new { id = product.Id })">Details</a>
+                        <a href="@Url.Action("EditProduct", new { id = product.Id })">Edit</a>
+                        <a href="@Url.Action("DeleteProduct", new { id = product.Id })">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="@Url.Action("CreateProduct")">Create Product</a>
+}

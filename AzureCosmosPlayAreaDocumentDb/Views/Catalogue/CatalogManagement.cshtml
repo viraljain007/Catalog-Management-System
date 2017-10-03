@@ -1,0 +1,45 @@
+﻿@model AzureCosmosPlayAreaDocumentDb.Models.CatalogViewModel
+
+@{
+    ViewBag.Title = "CatalogManagement";
+}
+
+<h2>CatalogManagement</h2>
+
+<div>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Category</label>
+            <div class="col-sm-6">
+                @Html.DropDownListFor(model => model.CategoryList, new SelectList(Model.CategoryList, "Id", "Name"), "- Please Select -", new { @class = "form-control" })
+            </div>
+        </div>
+
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">SubCategory</label>
+                <div class="col-sm-6">
+                    @Html.DropDownListFor(model => model.SubCategoryList, new SelectList(Model.SubCategoryList, "Id", "Name"), "- Please Select -", new { @class = "form-control" })
+                </div>
+            </div>
+
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Product</label>
+                    <div class="col-sm-6">
+                        @Html.DropDownListFor(model => model.ProductList, new SelectList(Model.ProductList, "Id", "Name"), "- Please Select -", new { @class = "form-control" })
+                    </div>
+                </div>
+
+            </div>
+
+            <p>
+                @*@Html.ActionLink("Edit", "Edit", new { id = Model.CategoryList }) |*@
+                @Html.ActionLink("Back to List", "CatalogIndex")
+            </p>
+
+        </div>
+    </div>
+</div>
